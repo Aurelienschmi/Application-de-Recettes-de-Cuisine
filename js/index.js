@@ -81,7 +81,7 @@ function buildCard(recipe) {
       <a href="details.html?id=${recipe.id}">
         <div class="card-image-wrap">
           <img src="${recipe.image}" alt="${recipe.name}>
-          <span class="card-category">${recipe.cuisine}</span>
+          <br><span class="card-category">${recipe.cuisine}</span>
           <button class="btn-fav ${typeof isFavorite === "function" && isFavorite(recipe.id) ? "active" : ""}" data-id="${recipe.id}" title="Ajouter aux favoris">
             <img class="icon-fav" src="./assets/${typeof isFavorite === "function" && isFavorite(recipe.id) ? "heart-solid-full.svg" : "heart-regular-full.svg"}" alt="">
           </button>
