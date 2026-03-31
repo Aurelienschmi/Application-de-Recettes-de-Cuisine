@@ -19,13 +19,13 @@ async function getRecipeById(id) {
   const res = await fetch(`https://dummyjson.com/recipes/${id}`);
   return res.json();
 }
-
+/*
 searchRecipes("chicken").then((recipes) => {
   console.log(recipes);
 });
 getRecipeById(5).then((recipe) => {
   console.log(recipe);
-});
+});*/
 
 //resultat type getAllRecipes():
 /* {

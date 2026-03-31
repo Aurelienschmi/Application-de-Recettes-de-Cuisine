@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recettes</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/index.css">
@@ -22,26 +22,44 @@
     </header>
 
     <div class="BDR">
-        <div class="Rechereche">
-            <div class="BarRecherche"></div>
-            <div class="Filtre"></div>
+      <div class="Rechereche">
+        <div class="BarRecherche">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Rechercher une recette..."
+            autocomplete="off"
+          />
         </div>
-        <div class="Navigation">
-
+        <div class="Filtre">
+          <select id="filter-category" autocomplete="off">
+            <option value="">Toutes les catégories</option>
+          </select>
+          <select id="filter-difficulty" autocomplete="off">
+            <option value="">Toutes les difficultés</option>
+            <option value="Easy">Facile</option>
+            <option value="Medium">Moyen</option>
+            <option value="Hard">Difficile</option>
+          </select>
+          <select id="filter-time" autocomplete="off">
+            <option value="">Tous les temps</option>
+            <option value="30">Moins de 30 min</option>
+            <option value="60">Moins de 60 min</option>
+            <option value="90">Moins de 90 min</option>
+          </select>
         </div>
+      </div>
+      <div class="Navigation"></div>
     </div>
-    <main class="Contenu">
-        <article class="Recette">
-            <div class="Image"></div>
-            <div class="Informations">
-                <aside class="Favoris"></aside>
-                <div class="Nom"></div>
-                <div class="InfoComp">
-                    <div class="Description"></div>
-                    <div class="Categories"></div>
-                </div>
-            </div>
-        </article>
+
+    <main>
+      <div class="results-header">
+        <h2 id="results-count"><strong>0</strong> recettes</h2>
+      </div>
+      <div id="recipes-grid"></div>
     </main>
-</body>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
 </html>
