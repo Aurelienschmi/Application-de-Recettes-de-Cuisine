@@ -1,4 +1,7 @@
-﻿let allRecipes = [];
+﻿//meme fonctionnement que index.js mais
+//avec un chargement initial différent (filtrer les recettes pour n'afficher que les favoris)
+
+let allRecipes = [];
 let filteredRecipes = [];
 
 // Au chargement du DOM, on charge les recettes et on setup les interactions
@@ -14,8 +17,9 @@ async function loadRecipes() {
 
     const fetchRecipes = await getAllRecipes();
     allRecipes = [];
+    //on ne garde que les recettes qui sont dans les favoris
     fetchRecipes.forEach((r) => {
-      if (typeof isFavorite === "function" && isFavorite(r.id)) {
+      if (isFavorite(r.id)) {
         allRecipes.push(r);
       }
     });

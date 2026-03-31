@@ -13,8 +13,8 @@ async function loadRecipes() {
     const searchInput = document.getElementById("search-input");
     if (searchInput) searchInput.value = "";
     ["filter-category", "filter-difficulty", "filter-time"].forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) el.selectedIndex = 0;
+      const element = document.getElementById(id);
+      if (element) element.selectedIndex = 0;
     });
 
     allRecipes = await getAllRecipes();
@@ -25,6 +25,7 @@ async function loadRecipes() {
     console.error("Erreur lors du chargement des recettes :", error);
   }
 }
+
 // Affiche les recettes dans la grille en fonction du tableau filtré
 function renderGrid() {
   const grid = document.getElementById("recipes-grid");
@@ -54,17 +55,15 @@ function renderGrid() {
       e.stopPropagation();
       let id = Number(btn.getAttribute("data-id"));
 
-      if (typeof toggleFavorite === "function") {
-        toggleFavorite(id);
-        if (isFavorite(id)) {
-          btn.innerHTML =
-            '<img class="icon-fav" src="./assets/heart-solid-full.svg" alt="">';
-          btn.classList.add("active");
-        } else {
-          btn.innerHTML =
-            '<img class="icon-fav" src="./assets/heart-regular-full.svg" alt="">';
-          btn.classList.remove("active");
-        }
+      toggleFavorite(id);
+      if (isFavorite(id)) {
+        btn.innerHTML =
+          '<img class="icon-fav" src="./assets/heart-solid-full.svg" alt="">';
+        btn.classList.add("active");
+      } else {
+        btn.innerHTML =
+          '<img class="icon-fav" src="./assets/heart-regular-full.svg" alt="">';
+        btn.classList.remove("active");
       }
     });
   });
@@ -104,8 +103,8 @@ function buildCard(recipe) {
 //setup des filtres de sélection
 function setupFilters() {
   ["filter-category", "filter-difficulty", "filter-time"].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener("change", () => applyFilters());
+    const element = document.getElementById(id); //
+    if (element) element.addEventListener("change", () => applyFilters());
   });
 }
 
