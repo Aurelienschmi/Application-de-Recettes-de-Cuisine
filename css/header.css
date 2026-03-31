@@ -1,0 +1,26 @@
+header {
+    background-color: #ff9800;
+    padding: 10px 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    display: block;
+}
+
+.liens a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.liens a:hover {
+    text-decoration: underline;
+}

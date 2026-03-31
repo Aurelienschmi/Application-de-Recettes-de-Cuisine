@@ -1,0 +1,10 @@
+/* Supprime les marges par défaut du navigateur */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Optionnel mais conseillé pour éviter les problèmes de calcul de largeur */
+* {
+    box-sizing: border-box;
+}
