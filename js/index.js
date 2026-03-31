@@ -72,14 +72,14 @@ function buildCard(recipe) {
 
   return `
     <article class="recipe-card">
-      <a href="detail.html?id=${recipe.id}">
+      <a href="details.html?id=${recipe.id}">
         <div class="card-image-wrap">
           <img src="${recipe.image}" alt="${recipe.name}" loading="lazy">
           <span class="card-category">${recipe.cuisine || "Cuisine"}</span>
           <button class="btn-fav" data-id="${recipe.id}" title="Ajouter aux favoris"></button>
         </div>
       </a>
-      <a href="detail.html?id=${recipe.id}" class="card-body">
+      <a href="details.html?id=${recipe.id}" class="card-body">
         <h3 class="card-title">${recipe.name}</h3>
         <p class="card-desc">${tags}</p>
         <div class="card-meta">
@@ -92,7 +92,7 @@ function buildCard(recipe) {
         </div>
       </a>
       <div class="card-footer">
-        <a href="detail.html?id=${recipe.id}" class="btn-voir">Voir la recette →</a>
+        <a href="details.html?id=${recipe.id}" class="btn-voir">Voir la recette →</a>
       </div>
     </article>`;
 }
