@@ -21,10 +21,8 @@ function updateFavButton() {
 
   if (isFavorite(id)) {
     icon.src = "./assets/heart-solid-full.svg";
-    text.textContent = "Retirer des favoris";
   } else {
     icon.src = "./assets/heart-regular-full.svg";
-    text.textContent = "Ajouter aux favoris";
   }
 }
 

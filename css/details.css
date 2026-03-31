@@ -35,7 +35,6 @@
 .description-recette {
     margin-top: 20px;
     font-size: 1.2em;
-    line-height: 1.6;
     color: #333333;
 }
 
@@ -43,4 +42,9 @@
     display: flex;
     gap: 40px;
     margin-top: 30px;
+}
+
+.icon-fav {
+    width: 40px;
+    height: 40px;
 }
