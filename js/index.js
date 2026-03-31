@@ -1,14 +1,10 @@
 ﻿let allRecipes = [];
 let filteredRecipes = [];
-let isLoading = true;
 
 // Au chargement du DOM, on charge les recettes et on setup les interactions
 document.addEventListener("DOMContentLoaded", async () => {
-  isLoading = true;
   await loadRecipes();
-  setupSearch();
   setupFilters();
-  isLoading = false;
 });
 
 //charge les recettes depuis l'API et affiche la grille
@@ -96,12 +92,6 @@ function buildCard(recipe) {
       </div>
     </article>`;
 }
-//setup de la recherche
-function setupSearch() {
-  const input = document.getElementById("search-input");
-  if (!input) return;
-  input.addEventListener("input", () => applyFilters());
-}
 
 //setup des filtres de sélection
 function setupFilters() {
@@ -138,8 +128,6 @@ function populateFilters() {
 
 // Applique les filtres de recherche et de sélection
 function applyFilters() {
-  if (isLoading) return;
-
   const input = document.getElementById("search-input");
   const searchQuery = input ? input.value.trim().toLowerCase() : "";
 
@@ -172,3 +160,5 @@ function applyFilters() {
 
   renderGrid();
 }
+const input = document.getElementById("search-input");
+input.addEventListener("input", () => applyFilters());
