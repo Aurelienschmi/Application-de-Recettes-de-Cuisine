@@ -52,9 +52,19 @@ function renderGrid() {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      btn.classList.toggle("active");
-      if (typeof updateFavCounter === "function") {
-        updateFavCounter();
+      let id = Number(btn.getAttribute("data-id"));
+
+      if (typeof toggleFavorite === "function") {
+        toggleFavorite(id);
+        if (isFavorite(id)) {
+          btn.innerHTML =
+            '<img class="icon-fav" src="./assets/heart-solid-full.svg" alt="">';
+          btn.classList.add("active");
+        } else {
+          btn.innerHTML =
+            '<img class="icon-fav" src="./assets/heart-regular-full.svg" alt="">';
+          btn.classList.remove("active");
+        }
       }
     });
   });
@@ -70,9 +80,11 @@ function buildCard(recipe) {
     <article class="recipe-card">
       <a href="details.html?id=${recipe.id}">
         <div class="card-image-wrap">
-          <img src="${recipe.image}" alt="${recipe.name}" loading="lazy">
-          <span class="card-category">${recipe.cuisine || "Cuisine"}</span>
-          <button class="btn-fav" data-id="${recipe.id}" title="Ajouter aux favoris"></button>
+          <img src="${recipe.image}" alt="${recipe.name}>
+          <span class="card-category">${recipe.cuisine}</span>
+          <button class="btn-fav ${typeof isFavorite === "function" && isFavorite(recipe.id) ? "active" : ""}" data-id="${recipe.id}" title="Ajouter aux favoris">
+            <img class="icon-fav" src="./assets/${typeof isFavorite === "function" && isFavorite(recipe.id) ? "heart-solid-full.svg" : "heart-regular-full.svg"}" alt="">
+          </button>
         </div>
       </a>
       <a href="details.html?id=${recipe.id}" class="card-body">
