@@ -11,3 +11,29 @@ getRecipeById(id).then((recipe) => {
     document.querySelector(".instructions-recette").textContent = `Instructions: ${recipe.instructions.join(" ")}`;
     document.querySelector(".tags").textContent = `Tags: ${recipe.tags.join(", ")}`
 });
+
+// gestion du favoris
+const btnFav = document.querySelector(".fav");
+
+function updateFavButton() {
+  const icon = btnFav.querySelector(".icon-fav");
+  const text = btnFav.querySelector(".text");
+
+  if (isFavorite(id)) {
+    icon.src = "./assets/heart-solid-full.svg";
+    text.textContent = "Retirer des favoris";
+  } else {
+    icon.src = "./assets/heart-regular-full.svg";
+    text.textContent = "Ajouter aux favoris";
+  }
+}
+
+// afficher état initial
+updateFavButton();
+
+// clic
+btnFav.addEventListener("click", () => {
+  toggleFavorite(id);
+
+  updateFavButton();
+})
