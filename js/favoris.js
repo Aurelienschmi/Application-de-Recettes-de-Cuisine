@@ -29,5 +29,5 @@ function toggleFavorite(id) {
 function isFavorite(id) {
   const favorites = getFavorites();
   const numId = Number(id);
-  return favorites.some((favId) => Number(favId) === numId);
+  return favorites.includes(numId);
 }
