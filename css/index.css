@@ -1,10 +1,24 @@
-/* Supprime les marges par défaut du navigateur */
 body {
     margin: 0;
     padding: 0;
 }
 
-/* Optionnel mais conseillé pour éviter les problèmes de calcul de largeur */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.BDR {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.Contenu {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
 }
