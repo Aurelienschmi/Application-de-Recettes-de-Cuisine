@@ -79,9 +79,9 @@ function buildCard(recipe) {
         <h3 class="card-title">${recipe.name}</h3>
         <p class="card-desc">${tags}</p>
         <div class="card-meta">
-          <span class="meta-item"><span class="icon">⏱</span> ${totalTime} min</span>
-          <span class="meta-item"><span class="icon">👤</span> ${recipe.servings} pers.</span>
-          <span class="meta-item"><span class="icon">📊</span> ${recipe.difficulty}</span>
+          <span class="meta-item"> ${totalTime} min</span>
+          <span class="meta-item"> ${recipe.servings} pers.</span>
+          <span class="meta-item"> ${recipe.difficulty}</span>
           <span class="card-rating">
             <span class="stars">★</span> ${recipe.rating}
           </span>
