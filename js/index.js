@@ -1,14 +1,10 @@
 ﻿let allRecipes = [];
 let filteredRecipes = [];
-let isLoading = true;
 
 // Au chargement du DOM, on charge les recettes et on setup les interactions
 document.addEventListener("DOMContentLoaded", async () => {
-  isLoading = true;
   await loadRecipes();
-  setupSearch();
   setupFilters();
-  isLoading = false;
 });
 
 //charge les recettes depuis l'API et affiche la grille
@@ -56,9 +52,19 @@ function renderGrid() {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      btn.classList.toggle("active");
-      if (typeof updateFavCounter === "function") {
-        updateFavCounter();
+      let id = Number(btn.getAttribute("data-id"));
+
+      if (typeof toggleFavorite === "function") {
+        toggleFavorite(id);
+        if (isFavorite(id)) {
+          btn.innerHTML =
+            '<img class="icon-fav" src="./assets/heart-solid-full.svg" alt="">';
+          btn.classList.add("active");
+        } else {
+          btn.innerHTML =
+            '<img class="icon-fav" src="./assets/heart-regular-full.svg" alt="">';
+          btn.classList.remove("active");
+        }
       }
     });
   });
@@ -72,35 +78,31 @@ function buildCard(recipe) {
 
   return `
     <article class="recipe-card">
-      <a href="detail.html?id=${recipe.id}">
+      <a href="details.html?id=${recipe.id}">
         <div class="card-image-wrap">
-          <img src="${recipe.image}" alt="${recipe.name}" loading="lazy">
-          <br><span class="card-category">${recipe.cuisine || "Cuisine"}</span>
-          <button class="btn-fav" data-id="${recipe.id}" title="Ajouter aux favoris"></button>
+          <img src="${recipe.image}" alt="${recipe.name}>
+          <br><span class="card-category">${recipe.cuisine}</span>
+          <button class="btn-fav ${typeof isFavorite === "function" && isFavorite(recipe.id) ? "active" : ""}" data-id="${recipe.id}" title="Ajouter aux favoris">
+            <img class="icon-fav" src="./assets/${typeof isFavorite === "function" && isFavorite(recipe.id) ? "heart-solid-full.svg" : "heart-regular-full.svg"}" alt="">
+          </button>
         </div>
       </a>
-      <a href="detail.html?id=${recipe.id}" class="card-body">
+      <a href="details.html?id=${recipe.id}" class="card-body">
         <h3 class="card-title">${recipe.name}</h3>
         <p class="card-desc">${tags}</p>
         <div class="card-meta">
-          <span class="meta-item">${totalTime} min</span>
-          <span class="meta-item">${recipe.servings} pers.</span>
-          <span class="meta-item">${recipe.difficulty}</span>
+          <span class="meta-item"> ${totalTime} min</span>
+          <span class="meta-item"> ${recipe.servings} pers.</span>
+          <span class="meta-item"> ${recipe.difficulty}</span>
           <span class="card-rating">
             <span class="stars">★</span> ${recipe.rating}
           </span>
         </div>
       </a>
       <div class="card-footer">
-        <a href="detail.html?id=${recipe.id}" class="btn-voir">Voir la recette →</a>
+        <a href="details.html?id=${recipe.id}" class="btn-voir">Voir la recette →</a>
       </div>
     </article>`;
-}
-//setup de la recherche
-function setupSearch() {
-  const input = document.getElementById("search-input");
-  if (!input) return;
-  input.addEventListener("input", () => applyFilters());
 }
 
 //setup des filtres de sélection
@@ -138,8 +140,6 @@ function populateFilters() {
 
 // Applique les filtres de recherche et de sélection
 function applyFilters() {
-  if (isLoading) return;
-
   const input = document.getElementById("search-input");
   const searchQuery = input ? input.value.trim().toLowerCase() : "";
 
@@ -172,3 +172,5 @@ function applyFilters() {
 
   renderGrid();
 }
+const input = document.getElementById("search-input");
+input.addEventListener("input", () => applyFilters());
