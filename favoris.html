@@ -1,45 +1,49 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recettes</title>
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/index.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mes Favoris</title>
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="logo">
-                <img src="./assets/meal-svgrepo-com.svg" alt="Logo du site">
-            </div>
-            <div class="liens">
-                <a href="index.html">Retour aux recettes</a>
-            </div>
-        </nav>
+      <nav>
+        <div class="logo">
+          <img src="./assets/meal-svgrepo-com.svg" alt="Logo du site" />
+        </div>
+        <div class="liens">
+          <a href="index.html">Retour aux recettes</a>
+        </div>
+      </nav>
     </header>
 
     <div class="BDR">
-        <div class="Rechereche">
-            <div class="BarRecherche"></div>
-            <div class="Filtre"></div>
+      <div class="Rechereche">
+        <div class="BarRecherche">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Rechercher dans mes favoris..."
+            autocomplete="off"
+          />
         </div>
-        <div class="Navigation">
-
-        </div>
+        <div class="Filtre"></div>
+      </div>
+      <div class="Navigation"></div>
     </div>
-    <main class="Contenu">
-        <article class="Recette">
-            <div class="Image"></div>
-            <div class="Informations">
-                <aside class="Favoris"></aside>
-                <div class="Nom"></div>
-                <div class="InfoComp">
-                    <div class="Description"></div>
-                    <div class="Categories"></div>
-                </div>
-            </div>
-        </article>
+
+    <main>
+      <div class="results-header">
+        <h2 id="results-count"><strong>0</strong> favoris</h2>
+      </div>
+      <div id="recipes-grid"></div>
     </main>
-</body>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/favoris.js"></script>
+    <script src="./js/favoris-page.js"></script>
+  </body>
 </html>
+
