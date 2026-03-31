@@ -13,13 +13,14 @@ function saveFavorites(favoris) {
 // basculer favoris
 function toggleFavorite(id) {
   let favorites = getFavorites();
+  const numId = Number(id);
 
-  if (favorites.includes(id)) {
+  if (favorites.some((favId) => Number(favId) === numId)) {
     // retirer
-    favorites = favorites.filter(favId => favId !== id);
+    favorites = favorites.filter((favId) => Number(favId) !== numId);
   } else {
     // ajouter
-    favorites.push(id);
+    favorites.push(numId);
   }
   saveFavorites(favorites);
 }
@@ -27,5 +28,6 @@ function toggleFavorite(id) {
 // vérifier si une recette est dans les favoris
 function isFavorite(id) {
   const favorites = getFavorites();
-  return favorites.includes(id);
+  const numId = Number(id);
+  return favorites.some((favId) => Number(favId) === numId);
 }
