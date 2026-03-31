@@ -8,3 +8,103 @@ body {
     margin: 0;
     padding: 0;
 }
+
+
+/* --- Style pour la recherche --- */
+
+.BDR {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #000000;
+}
+
+.Rechereche {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* --- Style pour les filtres --- */
+
+.Filtre {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.Filtre select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ff9800;
+    background: white;
+    cursor: pointer;
+}
+
+.results-header {
+    text-align: center;
+    font-size: 1.2em;
+    color: #ff9800;
+    padding-bottom: 20px;
+}
+
+/* --- Style pour les recettes --- */
+
+#recipes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+
+}
+
+.recipe-card {
+    background-color: #fff9f0;
+    border: solid;
+    border-color: #ff9800;
+    border-radius: 10%;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.card-image-wrap img {
+    width: auto;
+    height: 250px;
+    padding-top: 20px;
+}
+
+.recipe-card a {
+    text-decoration: none;
+}
+
+.card-category {
+    text-decoration: none;
+    margin-top: 20px;
+    color: #ff9800;
+    padding: 5px;
+    font-size: 0.9rem;
+}
+.card-body {
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.btn-voir {
+    text-decoration: none;
+    color: #ff9800;
+    font-weight: bold;
+}

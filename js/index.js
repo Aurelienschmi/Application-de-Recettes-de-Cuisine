@@ -75,7 +75,7 @@ function buildCard(recipe) {
       <a href="detail.html?id=${recipe.id}">
         <div class="card-image-wrap">
           <img src="${recipe.image}" alt="${recipe.name}" loading="lazy">
-          <span class="card-category">${recipe.cuisine || "Cuisine"}</span>
+          <br><span class="card-category">${recipe.cuisine || "Cuisine"}</span>
           <button class="btn-fav" data-id="${recipe.id}" title="Ajouter aux favoris"></button>
         </div>
       </a>
@@ -83,9 +83,9 @@ function buildCard(recipe) {
         <h3 class="card-title">${recipe.name}</h3>
         <p class="card-desc">${tags}</p>
         <div class="card-meta">
-          <span class="meta-item"><span class="icon">⏱</span> ${totalTime} min</span>
-          <span class="meta-item"><span class="icon">👤</span> ${recipe.servings} pers.</span>
-          <span class="meta-item"><span class="icon">📊</span> ${recipe.difficulty}</span>
+          <span class="meta-item">${totalTime} min</span>
+          <span class="meta-item">${recipe.servings} pers.</span>
+          <span class="meta-item">${recipe.difficulty}</span>
           <span class="card-rating">
             <span class="stars">★</span> ${recipe.rating}
           </span>
